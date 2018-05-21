@@ -7,7 +7,20 @@ $(document).ready(function(){
 
     }
 
-    console.log(BoardGame.colors)
+    const Player = {
+        playerMove: function(){
+
+        }
+    }
+
+    const AI = {
+        AIpickColor: function (){
+            return Math.floor(Math.random() * 4)
+        }
+    }
+
+    console.log(AI.AIpickColor())
+
 
 
 
