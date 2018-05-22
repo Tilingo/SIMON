@@ -16,7 +16,7 @@ const BoardGame = {
         console.log('they matched')
         Player.sequenceIndex = 0
         Player.sequence = []
-        this.AIturn()
+        AppController.AIturn()
     }
 } 
 
@@ -36,6 +36,7 @@ const AI = {
     AIpickColor: function () {
         this.sequence.push(Math.floor(Math.random() * 4));
         console.log(this.sequence)
+        UserExperience.ShowAIonBoard()
         AppController.playerTurn()
     }
 }
@@ -43,12 +44,72 @@ const AI = {
 const UserExperience = {
     //Show the AI sequence on the screen
     ShowAIonBoard: function () {
+        setTimeout(function(){
+            $('#green').css('background-color', 'purple')
+        }, 1000)
+        setTimeout(function(){
+            $('#green').css('background-color', 'green')
+        }, 1300)
 
     },
     //Show the player sequence on the screen
     ShowPlayerOnBoard: function () {
 
-    }
+    },
+    ShowAIonBoard: function (index) {
+        
+        for(let i = 0; i<AI.sequence.length; i++){
+            if(AI.sequence[i] == 0){
+                this.LightGreen()
+            }
+            else if(AI.sequence[i] == 1){
+                this.LightRed()
+            }
+            else if(AI.sequence[i] == 2){
+                this.LightBlue()
+            }
+            else if(AI.sequence[i] == 3){
+                this.LightYellow()
+            }
+        }
+
+    },
+    LightGreen: function () {
+        setTimeout(function(){
+            $('#green').css('background', 'radial-gradient(ellipse at center, rgba(210,255,82,1) 0%,rgba(145,232,66,1) 100%)')
+        }, 1000)
+        setTimeout(function(){
+            $('#green').css('background', 'green')
+        }, 1300)
+
+    },
+    LightRed: function () {
+        setTimeout(function(){
+            $('#red').css('background', 'radial-gradient(ellipse at center, rgba(255,26,0,1) 0%,rgba(255,26,0,1) 100%)')
+        }, 1000)
+        setTimeout(function(){
+            $('#red').css('background', 'rgb(195, 0, 0)')
+        }, 1300)
+
+    },
+    LightBlue: function () {
+        setTimeout(function(){
+            $('#blue').css('background-color', 'purple')
+        }, 1000)
+        setTimeout(function(){
+            $('#blue').css('background-color', 'blue')
+        }, 1300)
+
+    },
+    LightYellow: function () {
+        setTimeout(function(){
+            $('#green').css('background-color', 'purple')
+        }, 1000)
+        setTimeout(function(){
+            $('#green').css('background-color', 'green')
+        }, 1300)
+
+    },
 }
 
 const AppController = {

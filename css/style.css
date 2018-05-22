@@ -1,3 +1,7 @@
+body {
+  background-color: black;
+}
+
 #board {
   width: 600px;
   height: 600px;
@@ -19,10 +23,18 @@
   grid-row: 1/2;
 }
 
+#green:active {
+  background: radial-gradient(ellipse at center, #d2ff52 0%, #91e842 100%);
+}
+
 #red {
-  background-color: red;
+  background-color: #c30000;
   grid-column: 2/3;
   grid-row: 1/2;
+}
+
+#red:active {
+  background: radial-gradient(ellipse at center, #ff1a00 0%, #ff1a00 100%);
 }
 
 #blue {
@@ -31,10 +43,18 @@
   grid-row: 2/3;
 }
 
+#blue:active {
+  background: radial-gradient(ellipse at center, #499bea 0%, #207ce5 100%);
+}
+
 #yellow {
-  background-color: yellow;
+  background-color: #ffcc00;
   grid-column: 2/3;
   grid-row: 2/3;
+}
+
+#yellow:active {
+  background: radial-gradient(ellipse at center, #ffff88 0%, #ffff88 100%);
 }
 
 #reset {

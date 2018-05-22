@@ -1,3 +1,5 @@
+body
+    background-color: black
 #board
     width: 600px
     height: 600px
@@ -14,22 +16,34 @@
 #green
     background-color: green
     grid-column: 1/2
-    grid-row: 1/2    
+    grid-row: 1/2 
+
+#green:active
+    background: radial-gradient(ellipse at center, rgba(210,255,82,1) 0%,rgba(145,232,66,1) 100%)
 
 #red
-    background-color: red
+    background-color: rgb(195, 0, 0)
     grid-column: 2/3 
-    grid-row: 1/2       
+    grid-row: 1/2 
+
+#red:active
+    background: radial-gradient(ellipse at center, rgba(255,26,0,1) 0%,rgba(255,26,0,1) 100%)     
 
 #blue
     background-color: blue
     grid-column: 1/2
-    grid-row: 2/3       
+    grid-row: 2/3  
+ 
+#blue:active
+    background: radial-gradient(ellipse at center, rgba(73,155,234,1) 0%,rgba(32,124,229,1) 100%)   
 
 #yellow
-    background-color: yellow
+    background-color: #ffcc00
     grid-column: 2/3 
-    grid-row: 2/3  
+    grid-row: 2/3 
+
+#yellow:active
+    background: radial-gradient(ellipse at center, rgba(255,255,136,1) 0%,rgba(255,255,136,1) 100%)    
 
 #reset
     display: none  
