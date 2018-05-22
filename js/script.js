@@ -1,4 +1,5 @@
 const BoardGame = {
+    level: 0,
     start: () => {
         AppController.AIturn()
         $('#start').css('display', 'none')
@@ -14,6 +15,8 @@ const BoardGame = {
         Player.sequence = []
         AI.sequence = []
         Player.sequenceIndex = 0
+        this.level = 0
+        UserExperience.ShowLevel()        
         $('#reset').css('display', 'none')
         $('#start').css('display', 'block')        
     },
@@ -22,6 +25,8 @@ const BoardGame = {
         console.log('they matched')
         Player.sequenceIndex = 0
         Player.sequence = []
+        this.level++
+        UserExperience.ShowLevel()
         AppController.AIturn()
     }
 }
@@ -53,8 +58,8 @@ const UserExperience = {
     delay: 0,
     //Show the AI sequence on the screen
     //Show the player sequence on the screen
-    ShowPlayerOnBoard: function () {
-
+    ShowLevel: function () {
+        $('#level').text(`Level: ${BoardGame.level.toString().padStart(2, '0')}`)
     },
     ShowAIonBoard: function (delay) {
         let index = AI.sequenceIndex
@@ -175,6 +180,11 @@ $('#blue').click(function () {
 
 $('#yellow').click(function () {
     Player.playerPick(3)
+    // UserExperience.LightYellow()
+    console.log(Player.sequence)
+})
+$('#yellow').keypress(function () {
+    playAudio()
     // UserExperience.LightYellow()
     console.log(Player.sequence)
 })
