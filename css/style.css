@@ -1,10 +1,10 @@
-.board {
-  width: 620px;
-  height: 620px;
+#board {
+  width: 600px;
+  height: 600px;
   border: solid;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 20px;
+  pointer-events: none;
 }
 
 .color {
@@ -13,27 +13,34 @@
   cursor: pointer;
 }
 
-.green {
+#green {
   background-color: green;
   grid-column: 1/2;
   grid-row: 1/2;
 }
 
-.red {
+#red {
   background-color: red;
   grid-column: 2/3;
   grid-row: 1/2;
 }
 
-.blue {
+#blue {
   background-color: blue;
   grid-column: 1/2;
   grid-row: 2/3;
 }
 
-.yellow {
+#yellow {
   background-color: yellow;
   grid-column: 2/3;
   grid-row: 2/3;
+}
+
+#reset {
+  display: none;
+  width: 100px;
+  padding: 50px 0;
+  font-size: 3em;
 }
 /*# sourceMappingURL=style.css.map */
