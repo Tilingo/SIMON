@@ -18,7 +18,7 @@ const BoardGame = {
         Player.sequence = []
         this.AIturn()
     }
-}
+} 
 
 const Player = {
     sequence: [],
