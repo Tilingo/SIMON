@@ -1,4 +1,10 @@
 const BoardGame = {
+    start: () => {
+        AppController.AIturn()
+        $('#start').css('display', 'none')
+        
+
+    },
     gameOver: function () {
         $('#board').css('pointer-events', 'none')
         alert('You loose!')
@@ -8,8 +14,8 @@ const BoardGame = {
         Player.sequence = []
         AI.sequence = []
         Player.sequenceIndex = 0
-        AppController.AIturn()
         $('#reset').css('display', 'none')
+        $('#start').css('display', 'block')        
     },
     nextTurn: function () {
         $('#board').css('pointer-events', 'none')
@@ -79,37 +85,37 @@ const UserExperience = {
     },
     LightGreen: function () {
         setTimeout(function () {
-            $('#green').css('background', 'radial-gradient(ellipse at center, rgba(210,255,82,1) 0%,rgba(145,232,66,1) 100%)')
+            $('#green').addClass('greenClicked')
         }, 1000)
         setTimeout(function () {
-            $('#green').css('background', 'green')
+            $('#green').removeClass('greenClicked')
         }, 1300)
 
     },
     LightRed: function () {
         setTimeout(function () {
-            $('#red').css('background', 'radial-gradient(ellipse at center, rgba(255,26,0,1) 0%,rgba(255,26,0,1) 100%)')
+            $('#red').addClass('redClicked')
         }, 1000)
         setTimeout(function () {
-            $('#red').css('background', 'rgb(195, 0, 0)')
+            $('#red').removeClass('redClicked')
         }, 1300)
 
     },
     LightBlue: function () {
         setTimeout(function () {
-            $('#blue').css('background', 'radial-gradient(ellipse at center, rgba(73,155,234,1) 0%,rgba(32,124,229,1) 100%)')
+            $('#blue').addClass('blueClicked')
         }, 1000)
         setTimeout(function () {
-            $('#blue').css('background', 'blue')
+            $('#blue').removeClass('blueClicked')
         }, 1300)
 
     },
     LightYellow: function () {
         setTimeout(function () {
-            $('#yellow').css('background', 'radial-gradient(ellipse at center, rgba(255,255,136,1) 0%,rgba(255,255,136,1) 100%)')
+            $('#yellow').addClass('yellowClicked')
         }, 1000)
         setTimeout(function () {
-            $('#yellow').css('background', '#ffcc00')
+            $('#yellow').removeClass('yellowClicked')
         }, 1300)
 
     },
@@ -139,9 +145,9 @@ const AppController = {
 
 }
 
-window.onload = function () {
-    AppController.AIturn()
-};
+$('#start').click(function () {
+    BoardGame.start()
+})
 
 $('#reset').click(function () {
     console.clear()
