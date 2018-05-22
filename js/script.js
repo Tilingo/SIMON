@@ -33,43 +33,48 @@ const Player = {
 
 const AI = {
     sequence: [],
+    sequenceIndex: 0,
     AIpickColor: function () {
         this.sequence.push(Math.floor(Math.random() * 4));
         console.log(this.sequence)
-        UserExperience.ShowAIonBoard()
+        UserExperience.ShowAIonBoard(UserExperience.delay)
         AppController.playerTurn()
     }
 }
 
 const UserExperience = {
+    delay:0,
     //Show the AI sequence on the screen
-    ShowAIonBoard: function () {
-        setTimeout(function(){
-            $('#green').css('background-color', 'purple')
-        }, 1000)
-        setTimeout(function(){
-            $('#green').css('background-color', 'green')
-        }, 1300)
-
-    },
     //Show the player sequence on the screen
     ShowPlayerOnBoard: function () {
 
     },
-    ShowAIonBoard: function (index) {
-        
+    ShowAIonBoard: function (delay) {
+        let index = AI.sequenceIndex
         for(let i = 0; i<AI.sequence.length; i++){
             if(AI.sequence[i] == 0){
-                this.LightGreen()
+                setTimeout(UserExperience.LightGreen, delay)
+                delay+=500
+                console.log(delay)
+                // index++
             }
             else if(AI.sequence[i] == 1){
-                this.LightRed()
+                 setTimeout(this.LightRed, delay)
+                 console.log(delay)
+                 delay+=500
+                //  index++
             }
             else if(AI.sequence[i] == 2){
-                this.LightBlue()
+                setTimeout(this.LightBlue, delay)
+                console.log(delay)
+                delay+=500
+                // index++
             }
             else if(AI.sequence[i] == 3){
-                this.LightYellow()
+                setTimeout(this.LightYellow, delay)
+                console.log(delay)
+                delay+=500
+                // index++
             }
         }
 
@@ -94,19 +99,19 @@ const UserExperience = {
     },
     LightBlue: function () {
         setTimeout(function(){
-            $('#blue').css('background-color', 'purple')
+            $('#blue').css('background', 'radial-gradient(ellipse at center, rgba(73,155,234,1) 0%,rgba(32,124,229,1) 100%)')
         }, 1000)
         setTimeout(function(){
-            $('#blue').css('background-color', 'blue')
+            $('#blue').css('background', 'blue')
         }, 1300)
 
     },
     LightYellow: function () {
         setTimeout(function(){
-            $('#green').css('background-color', 'purple')
+            $('#yellow').css('background', 'radial-gradient(ellipse at center, rgba(255,255,136,1) 0%,rgba(255,255,136,1) 100%)')
         }, 1000)
         setTimeout(function(){
-            $('#green').css('background-color', 'green')
+            $('#yellow').css('background', '#ffcc00')
         }, 1300)
 
     },
