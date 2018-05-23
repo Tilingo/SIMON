@@ -6,6 +6,7 @@ const BoardGame = {
     start: () => {
         if (BoardGame.isRunning == false) {
             BoardGame.isRunning = true
+            UserExperience.ShowStart()
             console.log(BoardGame.isRunning)
             $('#reset').disabled = true
             AppController.AIturn()
@@ -13,14 +14,16 @@ const BoardGame = {
     },
     gameOver: function () {
         $('.color').css('pointer-events', 'none')
+        $('#board').addClass('failure')        
         BoardGame.isRunning = false
         $('#reset').disabled = false
-        alert('You loose!')
+        // alert('You loose!')
 
     },
     reset: function () {
         if (BoardGame.isRunning == false) {
             console.clear()
+            $('#board').removeClass('failure')                    
             Player.sequence = []
             AI.sequence = []
             Player.sequenceIndex = 0
@@ -33,6 +36,7 @@ const BoardGame = {
     nextTurn: function () {
         // $('#board').css('pointer-events', 'none')
         console.log('they matched')
+        UserExperience.ShowSuccess()
         Player.sequenceIndex = 0
         Player.sequence = []
         this.level++
@@ -112,39 +116,103 @@ const UserExperience = {
     LightGreen: function () {
         setTimeout(function () {
             $('#green').addClass('greenClicked')
-        }, 1000)
+        }, 1300)
         setTimeout(function () {
             $('#green').removeClass('greenClicked')
-        }, 1300)
+        }, 1600)
 
     },
     LightRed: function () {
         setTimeout(function () {
             $('#red').addClass('redClicked')
-        }, 1000)
+        }, 1300)
         setTimeout(function () {
             $('#red').removeClass('redClicked')
-        }, 1300)
+        }, 1600)
 
     },
     LightBlue: function () {
         setTimeout(function () {
             $('#blue').addClass('blueClicked')
-        }, 1000)
+        }, 1300)
         setTimeout(function () {
             $('#blue').removeClass('blueClicked')
-        }, 1300)
+        }, 1600)
 
     },
     LightYellow: function () {
         setTimeout(function () {
             $('#yellow').addClass('yellowClicked')
-        }, 1000)
+        }, 1300)
         setTimeout(function () {
             $('#yellow').removeClass('yellowClicked')
-        }, 1300)
-
+        }, 1600)
     },
+    ShowStart: function () {
+
+        $('#green').addClass('start')
+
+        setTimeout(function () {
+            $('#green').removeClass('start')
+        }, 25)
+
+        setTimeout(function () {
+            $('#red').addClass('start')
+        }, 50)
+        setTimeout(function () {
+            $('#red').removeClass('start')
+        }, 75)
+
+        setTimeout(function () {
+            $('#yellow').addClass('start')
+        }, 100)
+        setTimeout(function () {
+            $('#yellow').removeClass('start')
+        }, 125)
+
+        setTimeout(function () {
+            $('#blue').addClass('start')
+        }, 250)
+        setTimeout(function () {
+            $('#blue').removeClass('start')
+        }, 300)
+
+        setTimeout(function () {
+            $('#green').addClass('start')
+        }, 325)
+
+        setTimeout(function () {
+            $('#green').removeClass('start')
+        }, 350)
+
+        setTimeout(function () {
+            $('#red').addClass('start')
+        }, 375)
+        setTimeout(function () {
+            $('#red').removeClass('start')
+        }, 400)
+
+        setTimeout(function () {
+            $('#yellow').addClass('start')
+        }, 425)
+        setTimeout(function () {
+            $('#yellow').removeClass('start')
+        }, 450)
+
+        setTimeout(function () {
+            $('#blue').addClass('start')
+        }, 475)
+        setTimeout(function () {
+            $('#blue').removeClass('start')
+        }, 500)
+    },
+    ShowSuccess: function () {
+        $('#board').addClass('success')
+
+        setTimeout(function () {
+            $('#board').removeClass('success')
+        }, 1000)
+    }
 }
 
 const AppController = {

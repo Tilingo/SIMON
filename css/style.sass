@@ -4,10 +4,10 @@ body
     position: relative
     width: 600px
     height: 600px
-    border: solid
+    // border: solid
     display: grid
     grid-template-columns: repeat(2, 1fr)
-    border: solid
+    // border: solid
     grid-gap: 1em
 
 .color
@@ -117,13 +117,13 @@ body
     background: silver
 
     h1
-        font-size: 3em
+        font-size: 3.5em
 
 .row
     display: flex
     width: 50%
     justify-content: space-between
-    padding: 5% 0
+    padding: 3% 0
 
 .button-tag
     display: flex
@@ -140,7 +140,19 @@ body
     letter-spacing: 5px
     display: flex
     justify-content: center
-    letter
+    
+.start
+    background: radial-gradient(ellipse at center, rgba(255,255,255,1) 0%,rgba(255,255,255,1) 100%)
+    box-shadow: inset 0 0 0 #000000
+
+.success
+    filter: drop-shadow(0 0 80px green)
+
+.failure
+    filter: drop-shadow(0 0 80px red)
+         
+    
+
 
 
     
