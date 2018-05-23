@@ -12,46 +12,51 @@
 
 <body>
 
-    <div id="board">
-        <div id="green" class="color"></div>
-        <div id="red" class="color"></div>
-        <div id="blue" class="color"></div>
-        <div id="yellow" class="color"></div>
-        <div id="center-board">
+    <section class="main">
 
-            <h1>SIMON</h1>
-            <div class="row">
-                <div class="button-tag">
-                    <div id="level" class="score">00</div>
-                    <p>LEVEL</p>
+
+        <div id="board">
+            <div id="green" class="color"></div>
+            <div id="red" class="color"></div>
+            <div id="blue" class="color"></div>
+            <div id="yellow" class="color"></div>
+            <div id="center-board">
+
+                <h1>SIMON</h1>
+                <div class="row">
+                    <div class="button-tag">
+                        <div id="level" class="score">00</div>
+                        <p>LEVEL</p>
+                    </div>
+
+                    <div class="button-tag">
+                        <div id="highest-level" class="score">00</div>
+                        <p>HIGHEST</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="button-tag">
+                        <input id="start" class="button" type="button" name="start">
+                        <p>START</p>
+                    </div>
+                    <div class="button-tag">
+                        <input id="reset" class="button" type="button" name="reset">
+                        <p>RESET</p>
+                    </div>
                 </div>
 
-                <div class="button-tag">
-                    <div id="highest-level" class="score">00</div>
-                    <p>HIGHEST</p>
-                </div>
+
             </div>
-            <div class="row">
-                <div class="button-tag">
-                    <input id="start" class="button" type="button" name="start">
-                    <p>START</p>
-                </div>
-                <div class="button-tag">
-                    <input id="reset" class="button" type="button" name="reset">
-                    <p>RESET</p>
-                </div>
-            </div>
-
-
         </div>
-    </div>
 
 
-    <!-- <select id="dificulty" name="dificulty">
+        <!-- <select id="dificulty" name="dificulty">
         <option value="500">NORMAL</option>
         <option value="700">EASY</option>
         <option value="250">HARD</option>
     </select> -->
+
+    </section>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
