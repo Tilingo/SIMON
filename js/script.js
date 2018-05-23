@@ -1,13 +1,17 @@
 const BoardGame = {
     level: 0,
     dificulty: 0,
-    // HighLevel: 0,
+    HighLevel: 0,
+    isRunning: false,
     start: () => {
-        AppController.AIturn()
-        $('#start').css('display', 'none')
+        if(BoardGame.isRunning == false){
+            BoardGame.isRunning = true
+            console.log(BoardGame.isRunning)
+            AppController.AIturn()
+        }
     },
     gameOver: function () {
-        $('#board').css('pointer-events', 'none')
+        $('.color').css('pointer-events', 'none')
         alert('You loose!')
         $('#reset').css('display', 'block')
     },
@@ -16,32 +20,30 @@ const BoardGame = {
         AI.sequence = []
         Player.sequenceIndex = 0
         this.level = 0
+        this.isRunning = false
         UserExperience.ShowLevel()
-        $('#reset').css('display', 'none')
-        $('#start').css('display', 'block')
+        // $('#reset').css('display', 'none')
     },
     nextTurn: function () {
-        $('#board').css('pointer-events', 'none')
+        // $('#board').css('pointer-events', 'none')
         console.log('they matched')
         Player.sequenceIndex = 0
         Player.sequence = []
         this.level++
         UserExperience.ShowLevel()
-        // this.HighestLevel()
-        // console.log(this.HighLevel)
+        this.HighestLevel()
+        console.log(BoardGame.HighLevel)
         AppController.AIturn()
     },
-    // HighestLevel: function () {
-    //     let score = this.level
-    //     let highScore = this.HighLevel
+    HighestLevel: function () {
 
-    //     if(this[level] > this[this.HighestLevel]){
-    //         highScore = score
-    //         console.log(score)
-    //         console.log(highScore)
-    //         AppController.ShowHighest(highScore)
-    //     }
-    // }
+        if(BoardGame.level > BoardGame.HighLevel){
+            BoardGame.HighLevel = BoardGame.level
+            // console.log(score)
+            // console.log(highScore)
+            AppController.ShowHighest(BoardGame.HighLevel)
+        }
+    }
 }
 
 const Player = {
@@ -142,7 +144,7 @@ const UserExperience = {
 const AppController = {
 
     playerTurn: function () {
-        $('#board').css('pointer-events', 'auto')
+        $('.color').css('pointer-events', 'auto')
 
     },
     AIturn: function () {

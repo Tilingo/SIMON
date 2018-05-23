@@ -9,14 +9,15 @@ body {
   border: solid;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  pointer-events: none;
   border: solid;
+  grid-gap: 1em;
 }
 
 .color {
   width: 300px;
   height: 300px;
   cursor: pointer;
+  pointer-events: none;
 }
 
 #green {
@@ -75,17 +76,22 @@ body {
 }
 
 #start {
-  width: 100px;
-  padding: 50px 0;
+  width: 25px;
+  height: 25px;
+  background-color: red;
+  border: solid 2px black;
+  border-radius: 100%;
+  box-shadow: inset 0 0 3px #000000;
   font-size: 3em;
+  cursor: pointer;
 }
 
-#level {
-  color: white;
+#start:active {
+  box-shadow: 0;
 }
 
-#highest-level {
-  color: white;
+#start:focus {
+  outline: none;
 }
 
 .greenClicked {
@@ -110,12 +116,22 @@ body {
 
 #center-board {
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 300px;
   height: 300px;
   left: 25%;
   top: 25%;
   border-radius: 100%;
   background: white;
-  border: solid;
+  border: solid 1em;
+  box-sizing: border-box;
+  background: silver;
+}
+
+#center-board h1 {
+  font-size: 3em;
 }
 /*# sourceMappingURL=style.css.map */
