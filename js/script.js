@@ -1,9 +1,6 @@
 const BoardGame = {
     level: 0,
-    Dificulty: function(){
-        const $dificulty = $('#dificulty').value
-        if($dificulty)
-    },
+    dificulty: 0,
     // HighLevel: 0,
     start: () => {
         AppController.AIturn()
@@ -77,7 +74,7 @@ const UserExperience = {
     ShowLevel: function () {
         $('#level').text(`Level: ${BoardGame.level.toString().padStart(2, '0')}`)
     },
-    ShowAIonBoard: function (delay, mode) {
+    ShowAIonBoard: function (delay) {
         let index = AI.sequenceIndex
         for (let i = 0; i < AI.sequence.length; i++) {
             if (AI.sequence[i] == 0) {
@@ -100,7 +97,7 @@ const UserExperience = {
                 console.log(delay)
                 // index++
             }
-            delay += mode
+            delay += 500
         }
 
     },
@@ -207,3 +204,9 @@ $('#yellow').keypress(function () {
     // UserExperience.LightYellow()
     console.log(Player.sequence)
 })
+
+// $('#dificulty').change(function(){
+//     BoardGame.dificulty = $('#dificulty').value
+    
+//     console.log(BoardGame.dificulty)
+// })
