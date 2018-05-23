@@ -58,36 +58,29 @@ body
 #yellow:active
     background: radial-gradient(ellipse at center, rgba(255,255,136,1) 0%,rgba(255,255,136,1) 100%)
     box-shadow: inset 0 0 30px #000000
-        
 
-#reset
-    display: none  
-    width: 100px
-    padding: 50px 0
-    font-size: 3em 
-#start  
+.button  
     width: 25px
     height: 25px
-    background-color: red
     border: solid 2px black
     border-radius: 100%
-    box-shadow: inset 0 0 3px #000000    
+    box-shadow: inset 0 0 2px #000000    
     font-size: 3em 
     cursor: pointer
 
+#start
+    background-color: red
 
-#start:active
-    box-shadow: 0 
+.button:active
+    box-shadow: inset 0 0 5px #000000 
 
-#start:focus 
-  outline: none
-     
+#reset
+    background-color: yellow
     
-
   
-#level
 
-#highest-level
+.button:focus 
+  outline: none
 
 .greenClicked
     background: radial-gradient(ellipse at center, rgba(210,255,82,1) 0%,rgba(145,232,66,1) 100%)
@@ -126,6 +119,22 @@ body
     h1
         font-size: 3em
 
+.row
+    display: flex
+    width: 50%
+    justify-content: space-between
+    padding: 5% 0
+
+.button-tag
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+
+.score
+    color: green
+    background-color: black
+    padding: 5%
 
 
     

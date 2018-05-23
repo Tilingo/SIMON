@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>SIMON</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -17,17 +18,34 @@
         <div id="blue" class="color"></div>
         <div id="yellow" class="color"></div>
         <div id="center-board">
+
             <h1>SIMON</h1>
-            <div id="level">Level: 00</div>
-            <div id="highest-level">Highest Level: 00</div>
-            <input id="start" type="button" name="start">
-            <div>
-                <label for="start">START</label>
-                <input id="reset" type="button" value="RESET">
+            <div class="row">
+                <div class="button-tag">
+                    <div id="level" class="score">00</div>
+                    <p>LEVEL</p>
+                </div>
+
+                <div class="button-tag">
+                    <div id="highest-level" class="score">00</div>
+                    <p>HIGHEST</p>
+                </div>
             </div>
+            <div class="row">
+                <div class="button-tag">
+                    <input id="start" class="button" type="button" name="start">
+                    <p>START</p>
+                </div>
+                <div class="button-tag">
+                    <input id="reset" class="button" type="button" name="reset">
+                    <p>RESET</p>
+                </div>
+            </div>
+
+
         </div>
     </div>
-    
+
 
     <!-- <select id="dificulty" name="dificulty">
         <option value="500">NORMAL</option>

@@ -4,25 +4,31 @@ const BoardGame = {
     HighLevel: 0,
     isRunning: false,
     start: () => {
-        if(BoardGame.isRunning == false){
+        if (BoardGame.isRunning == false) {
             BoardGame.isRunning = true
             console.log(BoardGame.isRunning)
+            $('#reset').disabled = true
             AppController.AIturn()
         }
     },
     gameOver: function () {
         $('.color').css('pointer-events', 'none')
+        BoardGame.isRunning = false
+        $('#reset').disabled = false
         alert('You loose!')
-        $('#reset').css('display', 'block')
+
     },
     reset: function () {
-        Player.sequence = []
-        AI.sequence = []
-        Player.sequenceIndex = 0
-        this.level = 0
-        this.isRunning = false
-        UserExperience.ShowLevel()
-        // $('#reset').css('display', 'none')
+        if (BoardGame.isRunning == false) {
+            console.clear()
+            Player.sequence = []
+            AI.sequence = []
+            Player.sequenceIndex = 0
+            BoardGame.level = 0
+            BoardGame.isRunning = false
+            UserExperience.ShowLevel()
+        }
+
     },
     nextTurn: function () {
         // $('#board').css('pointer-events', 'none')
@@ -37,7 +43,7 @@ const BoardGame = {
     },
     HighestLevel: function () {
 
-        if(BoardGame.level > BoardGame.HighLevel){
+        if (BoardGame.level > BoardGame.HighLevel) {
             BoardGame.HighLevel = BoardGame.level
             // console.log(score)
             // console.log(highScore)
@@ -74,7 +80,7 @@ const UserExperience = {
     //Show the AI sequence on the screen
     //Show the player sequence on the screen
     ShowLevel: function () {
-        $('#level').text(`Level: ${BoardGame.level.toString().padStart(2, '0')}`)
+        $('#level').text(`${BoardGame.level.toString().padStart(2, '0')}`)
     },
     ShowAIonBoard: function (delay) {
         let index = AI.sequenceIndex
@@ -163,7 +169,7 @@ const AppController = {
         }
     },
     ShowHighest: (score) => {
-        $('#highest-level').text(`Highest Level: ${score.toString().padStart(2, '0')}`)
+        $('#highest-level').text(`${score.toString().padStart(2, '0')}`)
     }
 
 }
@@ -173,7 +179,6 @@ $('#start').click(function () {
 })
 
 $('#reset').click(function () {
-    console.clear()
     BoardGame.reset()
 })
 
@@ -209,6 +214,6 @@ $('#yellow').keypress(function () {
 
 // $('#dificulty').change(function(){
 //     BoardGame.dificulty = $('#dificulty').value
-    
+
 //     console.log(BoardGame.dificulty)
 // })
