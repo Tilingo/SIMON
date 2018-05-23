@@ -170,4 +170,8 @@ body {
 .failure {
   filter: drop-shadow(0 0 80px red);
 }
+
+img {
+  width: 200px;
+}
 /*# sourceMappingURL=style.css.map */
