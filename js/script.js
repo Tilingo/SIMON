@@ -19,7 +19,6 @@ const BoardGame = {
         $('#board').addClass('failure')        
         BoardGame.isRunning = false
         $('#reset').disabled = false
-        // alert('You loose!')
 
     },
     reset: function () {
