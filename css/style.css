@@ -72,9 +72,14 @@ body {
   width: 100px;
   padding: 50px 0;
   font-size: 3em;
+  display: none;
 }
 
 #level {
+  color: white;
+}
+
+#highest-level {
   color: white;
 }
 

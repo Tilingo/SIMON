@@ -1,10 +1,13 @@
 const BoardGame = {
     level: 0,
+    Dificulty: function(){
+        const $dificulty = $('#dificulty').value
+        if($dificulty)
+    },
+    // HighLevel: 0,
     start: () => {
         AppController.AIturn()
         $('#start').css('display', 'none')
-        
-
     },
     gameOver: function () {
         $('#board').css('pointer-events', 'none')
@@ -16,9 +19,9 @@ const BoardGame = {
         AI.sequence = []
         Player.sequenceIndex = 0
         this.level = 0
-        UserExperience.ShowLevel()        
+        UserExperience.ShowLevel()
         $('#reset').css('display', 'none')
-        $('#start').css('display', 'block')        
+        $('#start').css('display', 'block')
     },
     nextTurn: function () {
         $('#board').css('pointer-events', 'none')
@@ -27,8 +30,21 @@ const BoardGame = {
         Player.sequence = []
         this.level++
         UserExperience.ShowLevel()
+        // this.HighestLevel()
+        // console.log(this.HighLevel)
         AppController.AIturn()
-    }
+    },
+    // HighestLevel: function () {
+    //     let score = this.level
+    //     let highScore = this.HighLevel
+
+    //     if(this[level] > this[this.HighestLevel]){
+    //         highScore = score
+    //         console.log(score)
+    //         console.log(highScore)
+    //         AppController.ShowHighest(highScore)
+    //     }
+    // }
 }
 
 const Player = {
@@ -61,7 +77,7 @@ const UserExperience = {
     ShowLevel: function () {
         $('#level').text(`Level: ${BoardGame.level.toString().padStart(2, '0')}`)
     },
-    ShowAIonBoard: function (delay) {
+    ShowAIonBoard: function (delay, mode) {
         let index = AI.sequenceIndex
         for (let i = 0; i < AI.sequence.length; i++) {
             if (AI.sequence[i] == 0) {
@@ -84,7 +100,7 @@ const UserExperience = {
                 console.log(delay)
                 // index++
             }
-            delay += 500
+            delay += mode
         }
 
     },
@@ -146,6 +162,9 @@ const AppController = {
         if (playerSeq.length == AIseq.length && playerSeq[index] == AIseq[index]) {
             BoardGame.nextTurn()
         }
+    },
+    ShowHighest: (score) => {
+        $('#highest-level').text(`Highest Level: ${score.toString().padStart(2, '0')}`)
     }
 
 }
