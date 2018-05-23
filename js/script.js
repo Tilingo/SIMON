@@ -36,6 +36,7 @@ const BoardGame = {
     nextTurn: function () {
         // $('#board').css('pointer-events', 'none')
         console.log('they matched')
+        Audio.Success()        
         UserExperience.ShowSuccess()
         Player.sequenceIndex = 0
         Player.sequence = []
@@ -53,6 +54,12 @@ const BoardGame = {
             // console.log(highScore)
             AppController.ShowHighest(BoardGame.HighLevel)
         }
+    }
+}
+
+const Audio = {
+    Success: () => {
+        document.getElementById('success-sound').play()
     }
 }
 
