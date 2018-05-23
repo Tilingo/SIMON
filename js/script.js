@@ -3,6 +3,7 @@ const BoardGame = {
     dificulty: 0,
     HighLevel: 0,
     isRunning: false,
+    isPlaying: false,
     start: () => {
         if (BoardGame.isRunning == false) {
             BoardGame.isRunning = true
@@ -13,6 +14,7 @@ const BoardGame = {
         }
     },
     gameOver: function () {
+        Audio.Failure()
         $('.color').css('pointer-events', 'none')
         $('#board').addClass('failure')        
         BoardGame.isRunning = false
@@ -40,9 +42,9 @@ const BoardGame = {
         UserExperience.ShowSuccess()
         Player.sequenceIndex = 0
         Player.sequence = []
-        this.level++
+        BoardGame.level++
         UserExperience.ShowLevel()
-        this.HighestLevel()
+        BoardGame.HighestLevel()
         console.log(BoardGame.HighLevel)
         AppController.AIturn()
     },
@@ -60,6 +62,21 @@ const BoardGame = {
 const Audio = {
     Success: () => {
         document.getElementById('success-sound').play()
+    },
+    Red: () => {
+        document.getElementById('red-sound').play()
+    },
+    Green: () => {
+        document.getElementById('green-sound').play()
+    },
+    Blue: () => {
+        document.getElementById('blue-sound').play()
+    },
+    Yellow: () => {
+        document.getElementById('yellow-sound').play()
+    },
+    Failure: () => {
+        document.getElementById('failure-sound').play()        
     }
 }
 
@@ -97,21 +114,25 @@ const UserExperience = {
         let index = AI.sequenceIndex
         for (let i = 0; i < AI.sequence.length; i++) {
             if (AI.sequence[i] == 0) {
+                // Audio.Green()
                 setTimeout(UserExperience.LightGreen, delay)
                 console.log(delay)
                 // index++
             }
             else if (AI.sequence[i] == 1) {
+                // Audio.Red()                
                 setTimeout(this.LightRed, delay)
                 console.log(delay)
                 //  index++
             }
             else if (AI.sequence[i] == 2) {
+                // Audio.Blue()                
                 setTimeout(this.LightBlue, delay)
                 console.log(delay)
                 // index++
             }
             else if (AI.sequence[i] == 3) {
+                // Audio.Yellow()                
                 setTimeout(this.LightYellow, delay)
                 console.log(delay)
                 // index++
@@ -123,6 +144,7 @@ const UserExperience = {
     LightGreen: function () {
         setTimeout(function () {
             $('#green').addClass('greenClicked')
+            Audio.Green()
         }, 1300)
         setTimeout(function () {
             $('#green').removeClass('greenClicked')
@@ -132,6 +154,7 @@ const UserExperience = {
     LightRed: function () {
         setTimeout(function () {
             $('#red').addClass('redClicked')
+            Audio.Red()
         }, 1300)
         setTimeout(function () {
             $('#red').removeClass('redClicked')
@@ -141,6 +164,7 @@ const UserExperience = {
     LightBlue: function () {
         setTimeout(function () {
             $('#blue').addClass('blueClicked')
+            Audio.Blue()
         }, 1300)
         setTimeout(function () {
             $('#blue').removeClass('blueClicked')
@@ -150,6 +174,7 @@ const UserExperience = {
     LightYellow: function () {
         setTimeout(function () {
             $('#yellow').addClass('yellowClicked')
+            Audio.Yellow()
         }, 1300)
         setTimeout(function () {
             $('#yellow').removeClass('yellowClicked')
@@ -237,10 +262,12 @@ const AppController = {
         const AIseq = AI.sequence
 
         if (playerSeq[index] !== AIseq[index]) {
-            BoardGame.gameOver()
+            setTimeout(BoardGame.gameOver, 500)
+            // BoardGame.gameOver()
         }
         if (playerSeq.length == AIseq.length && playerSeq[index] == AIseq[index]) {
-            BoardGame.nextTurn()
+            // BoardGame.nextTurn()
+            setTimeout(BoardGame.nextTurn, 600)
         }
     },
     ShowHighest: (score) => {
@@ -259,30 +286,29 @@ $('#reset').click(function () {
 
 //Player picker set of functions
 $('#green').click(function () {
+    Audio.Green()
     Player.playerPick(0)
     // UserExperience.LightGreen()
     console.log(Player.sequence)
 })
 
 $('#red').click(function () {
+    Audio.Red()    
     Player.playerPick(1)
     // UserExperience.LightRed()
     console.log(Player.sequence)
 })
 
 $('#blue').click(function () {
+    Audio.Blue()    
     Player.playerPick(2)
     // UserExperience.LightBlue()
     console.log(Player.sequence)
 })
 
 $('#yellow').click(function () {
+    Audio.Yellow()    
     Player.playerPick(3)
-    // UserExperience.LightYellow()
-    console.log(Player.sequence)
-})
-$('#yellow').keypress(function () {
-    playAudio()
     // UserExperience.LightYellow()
     console.log(Player.sequence)
 })
