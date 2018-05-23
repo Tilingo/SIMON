@@ -19,6 +19,7 @@ const BoardGame = {
         $('#board').addClass('failure')        
         BoardGame.isRunning = false
         $('#reset').disabled = false
+        $('#start').disabled = true       
 
     },
     reset: function () {
@@ -30,6 +31,7 @@ const BoardGame = {
             Player.sequenceIndex = 0
             BoardGame.level = 0
             BoardGame.isRunning = false
+            $('#start').disabled = false                    
             UserExperience.ShowLevel()
         }
 
