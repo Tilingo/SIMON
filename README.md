@@ -24,4 +24,4 @@ When the users come to the site, they see an intro screen with the name of the g
 
 ## Wireframe
 
-![Image of the wireframe](img/wireframeSimon.jpg)
+![Image of the wireframe](https://github.com/Tilingo/SIMON/blob/master/img/wireframeSimon.jpg)
