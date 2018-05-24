@@ -25,7 +25,7 @@ const BoardGame = {
     },
     reset: function () {
         if (BoardGame.gameOver == true) {
-            BoardGame.isRunning = false
+            BoardGame.gameOver = false
             console.clear()
             $('#board').removeClass('failure')
             Player.sequence = []
