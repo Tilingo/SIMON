@@ -3,35 +3,37 @@ const BoardGame = {
     dificulty: 0,
     HighLevel: 0,
     isRunning: false,
-    isPlaying: false,
+    gameOver: false,
     start: () => {
         if (BoardGame.isRunning == false) {
             BoardGame.isRunning = true
             UserExperience.ShowStart()
             console.log(BoardGame.isRunning)
             $('#reset').disabled = true
+            // $('#start').disabled = true
             AppController.AIturn()
         }
     },
     gameOver: function () {
         Audio.Failure()
         $('.color').css('pointer-events', 'none')
-        $('#board').addClass('failure')        
-        BoardGame.isRunning = false
+        $('#board').addClass('failure')
+        BoardGame.gameOver = true
         $('#reset').disabled = false
-        $('#start').disabled = true       
+        // $('#start').disabled = true       
 
     },
     reset: function () {
-        if (BoardGame.isRunning == false) {
+        if (BoardGame.gameOver == true) {
+            BoardGame.isRunning = false
             console.clear()
-            $('#board').removeClass('failure')                    
+            $('#board').removeClass('failure')
             Player.sequence = []
             AI.sequence = []
             Player.sequenceIndex = 0
             BoardGame.level = 0
             BoardGame.isRunning = false
-            $('#start').disabled = false                    
+            // $('#start').disabled = false                    
             UserExperience.ShowLevel()
         }
 
@@ -39,7 +41,7 @@ const BoardGame = {
     nextTurn: function () {
         // $('#board').css('pointer-events', 'none')
         console.log('they matched')
-        Audio.Success()        
+        Audio.Success()
         UserExperience.ShowSuccess()
         Player.sequenceIndex = 0
         Player.sequence = []
@@ -77,7 +79,7 @@ const Audio = {
         document.getElementById('yellow-sound').play()
     },
     Failure: () => {
-        document.getElementById('failure-sound').play()        
+        document.getElementById('failure-sound').play()
     }
 }
 
@@ -278,7 +280,9 @@ const AppController = {
 }
 
 $('#start').click(function () {
+    // if(BoardGame.isRunning == false){
     BoardGame.start()
+    // }
 })
 
 $('#reset').click(function () {
@@ -294,21 +298,21 @@ $('#green').click(function () {
 })
 
 $('#red').click(function () {
-    Audio.Red()    
+    Audio.Red()
     Player.playerPick(1)
     // UserExperience.LightRed()
     console.log(Player.sequence)
 })
 
 $('#blue').click(function () {
-    Audio.Blue()    
+    Audio.Blue()
     Player.playerPick(2)
     // UserExperience.LightBlue()
     console.log(Player.sequence)
 })
 
 $('#yellow').click(function () {
-    Audio.Yellow()    
+    Audio.Yellow()
     Player.playerPick(3)
     // UserExperience.LightYellow()
     console.log(Player.sequence)
