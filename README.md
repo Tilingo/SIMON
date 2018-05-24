@@ -4,7 +4,7 @@
 
 This is my first project on WDI16 at General Assembly. I chose to build a SIMON game.
 
-When the users come to the site, they see an intro screen with the name of the game, and a **PLAY** button. Once the click **PLAY**, the boardgame is show with some instructions on how to play.
+When the users come to the site, they see an intro screen with the name of the game, and a **PLAY** button. Once the click **PLAY**, the game board is shown with some instructions on how to play.
 
 ### [Live SIMON site](http://google.com)
 
@@ -29,5 +29,5 @@ When the users come to the site, they see an intro screen with the name of the g
 
 ## Future Development
 
-* Add dificulties
-* Add an option for second player
+* Add difficulties
+* Add an option for having a second player
