@@ -341,7 +341,7 @@ img {
   }
 }
 
-@media (min-width: 451px) and (max-width: 750px) {
+@media (min-width: 451px) and (max-width: 825px) {
   .information {
     display: none;
   }
