@@ -391,6 +391,18 @@ img {
   }
 }
 
+.row {
+  width: 70%;
+}
+
+.success {
+  filter: drop-shadow(0 0 100px green);
+}
+
+.failure {
+  filter: drop-shadow(0 0 100px red);
+}
+
 @media (min-width: 751px) and (max-width: 1000px) {
   .information {
     display: none;
