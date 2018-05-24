@@ -6,7 +6,7 @@ This is my first project on WDI16 at General Assembly. I chose to build a SIMON 
 
 When the users come to the site, they see an intro screen with the name of the game, and a **PLAY** button. Once the click **PLAY**, the boardgame is show with some instructions on how to play.
 
-### Live site: [link to SIMON project](http://google.com)
+### [Live SIMON site](http://google.com)
 
 ## Technologies Used
 
@@ -14,3 +14,14 @@ When the users come to the site, they see an intro screen with the name of the g
 * SASS (CSS)
 * Javascript
 * jQuery
+
+## Features
+
+* PLAY button
+* START button
+* COLORS button
+* RESET button
+
+## Wireframe
+
+![Image of the wireframe](img/wireframeSimon.jpg)
