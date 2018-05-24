@@ -299,6 +299,10 @@ $('#play').click(function () {
     setTimeout(function(){
         $('.main').css('opacity', '1')
     }, 50)
+    setTimeout(function(){
+        $('.main').css('transition', 'none')
+    }, 1050)
+            
 })
 
 // $('#dificulty').change(function(){

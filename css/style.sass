@@ -252,10 +252,18 @@ img
         background: green
 
 @media (max-width: 450px)
+    body
+        height: 100vh
+        display: flex
+        justify-content: center
+        align-items: center
+    .main
+        height: 80%
     .information
         display: none
     #board
         width: 400px
+        height: 100%
         grid-gap: 10px
         display: flex
         flex-direction: column
