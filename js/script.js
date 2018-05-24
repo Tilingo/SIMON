@@ -7,13 +7,11 @@ const BoardGame = {
         if (BoardGame.isRunning == false) {
             BoardGame.isRunning = true
             UserExperience.ShowStart()
-            console.log(BoardGame.isRunning)
             $('#reset').disabled = true
             AppController.AIturn()
         }
     },
     gameOver: () => {
-        console.log('game over')
         Audio.Failure()
         $('.color').css('pointer-events', 'none')
         $('#board').addClass('failure')
@@ -21,7 +19,6 @@ const BoardGame = {
 
     },
     reset: function () {
-        console.clear()
         $('#board').removeClass('failure')
         Player.sequence = []
         AI.sequence = []
@@ -32,7 +29,6 @@ const BoardGame = {
 
     },
     nextTurn: function () {
-        console.log('they matched')
         Audio.Success()
         UserExperience.ShowSuccess()
         Player.sequenceIndex = 0
@@ -87,7 +83,6 @@ const AI = {
     sequenceIndex: 0,
     AIpickColor: function () {
         this.sequence.push(Math.floor(Math.random() * 4));
-        console.log(this.sequence)
         UserExperience.ShowAIonBoard(UserExperience.delay)
         AppController.playerTurn()
     }
@@ -105,20 +100,15 @@ const UserExperience = {
         for (let i = 0; i < AI.sequence.length; i++) {
             if (AI.sequence[i] == 0) {
                 setTimeout(UserExperience.LightGreen, delay)
-                console.log(delay)
             }
             else if (AI.sequence[i] == 1) {
-                // Audio.Red()                
                 setTimeout(this.LightRed, delay)
-                console.log(delay)
             }
             else if (AI.sequence[i] == 2) {
                 setTimeout(this.LightBlue, delay)
-                console.log(delay)
             }
             else if (AI.sequence[i] == 3) {
                 setTimeout(this.LightYellow, delay)
-                console.log(delay)
             }
             delay += 500
         }
@@ -246,10 +236,8 @@ const AppController = {
 
         if (playerSeq[index] !== AIseq[index]) {
             BoardGame.gameOver()
-            console.log('bad checked')
         }
         if (playerSeq.length == AIseq.length && playerSeq[index] == AIseq[index]) {
-            console.log('good checked')
             setTimeout(BoardGame.nextTurn, 600)
         }
     },
@@ -271,38 +259,33 @@ $('#reset').click(function () {
 $('#green').click(function () {
     Audio.Green()
     Player.playerPick(0)
-    console.log(Player.sequence)
 })
 
 $('#red').click(function () {
     Audio.Red()
     Player.playerPick(1)
-    console.log(Player.sequence)
 })
 
 $('#blue').click(function () {
     Audio.Blue()
     Player.playerPick(2)
-    console.log(Player.sequence)
 })
 
 $('#yellow').click(function () {
     Audio.Yellow()
     Player.playerPick(3)
-    console.log(Player.sequence)
 })
 
 $('#play').click(function () {
     $('.splash').css('display', 'none')
-    $('.main').css('display', 'flex')    
-    // $('.main').css('opacity', '1')
-    setTimeout(function(){
+    $('.main').css('display', 'flex')
+    setTimeout(function () {
         $('.main').css('opacity', '1')
     }, 50)
-    setTimeout(function(){
+    setTimeout(function () {
         $('.main').css('transition', 'none')
     }, 1050)
-            
+
 })
 
 // $('#dificulty').change(function(){
