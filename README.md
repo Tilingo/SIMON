@@ -14,7 +14,7 @@ When the users come to the site, they see an intro screen with the name of the g
 * SASS (CSS)
 * Javascript
 * jQuery
-*[Trello](https://trello.com/b/VgpSnPdU/simon)
+* [Trello](https://trello.com/b/VgpSnPdU/simon)
 
 ## Features
 
