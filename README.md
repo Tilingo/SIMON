@@ -6,7 +6,7 @@ This is my first project for WDI16 at General Assembly. I chose to build a SIMON
 
 When the users come to the site, they see an intro screen with the name of the game, and a **PLAY** button. Once they click **PLAY**, the game board is shown with some instructions on how to play.
 
-### [Live SIMON site](stoic-neumann-a1d494.bitballoon.com)
+### [Live SIMON site](http://agitated-beaver-1c7d91.bitballoon.com/)
 
 ## Technologies Used
 
