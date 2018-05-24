@@ -3,43 +3,35 @@ const BoardGame = {
     dificulty: 0,
     HighLevel: 0,
     isRunning: false,
-    gameOver: false,
     start: () => {
         if (BoardGame.isRunning == false) {
             BoardGame.isRunning = true
             UserExperience.ShowStart()
             console.log(BoardGame.isRunning)
             $('#reset').disabled = true
-            // $('#start').disabled = true
             AppController.AIturn()
         }
     },
-    gameOver: function () {
+    gameOver: () => {
+        console.log('game over')
         Audio.Failure()
         $('.color').css('pointer-events', 'none')
         $('#board').addClass('failure')
-        BoardGame.gameOver = true
         $('#reset').disabled = false
-        // $('#start').disabled = true       
 
     },
     reset: function () {
-        if (BoardGame.gameOver == true) {
-            BoardGame.gameOver = false
-            console.clear()
-            $('#board').removeClass('failure')
-            Player.sequence = []
-            AI.sequence = []
-            Player.sequenceIndex = 0
-            BoardGame.level = 0
-            BoardGame.isRunning = false
-            // $('#start').disabled = false                    
-            UserExperience.ShowLevel()
-        }
+        console.clear()
+        $('#board').removeClass('failure')
+        Player.sequence = []
+        AI.sequence = []
+        Player.sequenceIndex = 0
+        BoardGame.level = 0
+        BoardGame.isRunning = false
+        UserExperience.ShowLevel()
 
     },
     nextTurn: function () {
-        // $('#board').css('pointer-events', 'none')
         console.log('they matched')
         Audio.Success()
         UserExperience.ShowSuccess()
@@ -48,15 +40,12 @@ const BoardGame = {
         BoardGame.level++
         UserExperience.ShowLevel()
         BoardGame.HighestLevel()
-        console.log(BoardGame.HighLevel)
         AppController.AIturn()
     },
     HighestLevel: function () {
 
         if (BoardGame.level > BoardGame.HighLevel) {
             BoardGame.HighLevel = BoardGame.level
-            // console.log(score)
-            // console.log(highScore)
             AppController.ShowHighest(BoardGame.HighLevel)
         }
     }
@@ -89,9 +78,7 @@ const Player = {
     playerPick: function (numero) {
         Player.sequence.push(numero)
         Player.sequenceIndex++
-        // UserExperience.LightGreen()        
         AppController.CheckSequence()
-        // AppController.AIturn()
     }
 }
 
@@ -117,28 +104,21 @@ const UserExperience = {
         let index = AI.sequenceIndex
         for (let i = 0; i < AI.sequence.length; i++) {
             if (AI.sequence[i] == 0) {
-                // Audio.Green()
                 setTimeout(UserExperience.LightGreen, delay)
                 console.log(delay)
-                // index++
             }
             else if (AI.sequence[i] == 1) {
                 // Audio.Red()                
                 setTimeout(this.LightRed, delay)
                 console.log(delay)
-                //  index++
             }
             else if (AI.sequence[i] == 2) {
-                // Audio.Blue()                
                 setTimeout(this.LightBlue, delay)
                 console.log(delay)
-                // index++
             }
             else if (AI.sequence[i] == 3) {
-                // Audio.Yellow()                
                 setTimeout(this.LightYellow, delay)
                 console.log(delay)
-                // index++
             }
             delay += 500
         }
@@ -265,11 +245,11 @@ const AppController = {
         const AIseq = AI.sequence
 
         if (playerSeq[index] !== AIseq[index]) {
-            setTimeout(BoardGame.gameOver, 500)
-            // BoardGame.gameOver()
+            setTimeout(BoardGame.gameOver, 100)
+            console.log('bad checked')
         }
         if (playerSeq.length == AIseq.length && playerSeq[index] == AIseq[index]) {
-            // BoardGame.nextTurn()
+            console.log('good checked')
             setTimeout(BoardGame.nextTurn, 600)
         }
     },
@@ -280,9 +260,7 @@ const AppController = {
 }
 
 $('#start').click(function () {
-    // if(BoardGame.isRunning == false){
     BoardGame.start()
-    // }
 })
 
 $('#reset').click(function () {
@@ -293,28 +271,24 @@ $('#reset').click(function () {
 $('#green').click(function () {
     Audio.Green()
     Player.playerPick(0)
-    // UserExperience.LightGreen()
     console.log(Player.sequence)
 })
 
 $('#red').click(function () {
     Audio.Red()
     Player.playerPick(1)
-    // UserExperience.LightRed()
     console.log(Player.sequence)
 })
 
 $('#blue').click(function () {
     Audio.Blue()
     Player.playerPick(2)
-    // UserExperience.LightBlue()
     console.log(Player.sequence)
 })
 
 $('#yellow').click(function () {
     Audio.Yellow()
     Player.playerPick(3)
-    // UserExperience.LightYellow()
     console.log(Player.sequence)
 })
 
