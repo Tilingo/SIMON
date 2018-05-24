@@ -1,8 +1,10 @@
+//Board game object, it controls most of the flow of the game
 const BoardGame = {
     level: 0,
     dificulty: 0,
     HighLevel: 0,
     isRunning: false,
+    //Set the conditions to start the game
     start: () => {
         if (BoardGame.isRunning == false) {
             BoardGame.isRunning = true
@@ -11,6 +13,7 @@ const BoardGame = {
             AppController.AIturn()
         }
     },
+    //Called after user's sequence is wrong
     gameOver: () => {
         Audio.Failure()
         $('.color').css('pointer-events', 'none')
@@ -18,6 +21,8 @@ const BoardGame = {
         $('#reset').disabled = false
 
     },
+    //It sets all the coditions to zero except for high score,
+    //to start playing again
     reset: function () {
         $('#board').removeClass('failure')
         Player.sequence = []
@@ -28,6 +33,8 @@ const BoardGame = {
         UserExperience.ShowLevel()
 
     },
+    //Called after user's sequence is correct,
+    //it resets some turn values and call the AI turn
     nextTurn: function () {
         Audio.Success()
         UserExperience.ShowSuccess()
@@ -38,6 +45,7 @@ const BoardGame = {
         BoardGame.HighestLevel()
         AppController.AIturn()
     },
+    //It checks if the highest score has been beaten
     HighestLevel: function () {
 
         if (BoardGame.level > BoardGame.HighLevel) {
@@ -47,6 +55,7 @@ const BoardGame = {
     }
 }
 
+//Object with the audio play functions
 const Audio = {
     Success: () => {
         document.getElementById('success-sound').play()
@@ -68,19 +77,22 @@ const Audio = {
     }
 }
 
+//Object with some information about the player
 const Player = {
     sequence: [],
     sequenceIndex: 0,
-    playerPick: function (numero) {
+    playerPick: function (numero) { //It storage the value of the player sequence in the array
         Player.sequence.push(numero)
         Player.sequenceIndex++
-        AppController.CheckSequence()
+        AppController.CheckSequence()//Call the function that checks if player move is correct
     }
 }
 
+//Object with some AI information
 const AI = {
     sequence: [],
     sequenceIndex: 0,
+    //Randomly pick a Color and storage it into the AI array
     AIpickColor: function () {
         this.sequence.push(Math.floor(Math.random() * 4));
         UserExperience.ShowAIonBoard(UserExperience.delay)
@@ -88,6 +100,7 @@ const AI = {
     }
 }
 
+//Object in charge of showing content on the screen (UX)
 const UserExperience = {
     delay: 0,
     //Show the AI sequence on the screen
@@ -114,6 +127,7 @@ const UserExperience = {
         }
 
     },
+    //Set of functions that controls the color higlights on the screen
     LightGreen: function () {
         setTimeout(function () {
             $('#green').addClass('greenClicked')
@@ -153,6 +167,9 @@ const UserExperience = {
             $('#yellow').removeClass('yellowClicked')
         }, 1600)
     },
+    //end of set
+
+    //Function that controls the white lights after game starts
     ShowStart: function () {
 
         $('#green').addClass('start')
@@ -219,17 +236,19 @@ const UserExperience = {
         }, 1000)
     }
 }
+//end of function
 
+//Object in charge of some game functionalities
 const AppController = {
 
-    playerTurn: function () {
+    playerTurn: function () { //Set the pointer events to auto on player turn, for picking colors
         $('.color').css('pointer-events', 'auto')
 
     },
-    AIturn: function () {
+    AIturn: function () {// Execute AI turn
         AI.AIpickColor()
     },
-    CheckSequence: function () {
+    CheckSequence: function () { //It checks if user match AI's sequence
         let index = Player.sequenceIndex - 1
         const playerSeq = Player.sequence
         const AIseq = AI.sequence
@@ -247,11 +266,12 @@ const AppController = {
 
 }
 
-$('#start').click(function () {
+//Set of functions on click
+$('#start').click(function () {//Start the game
     BoardGame.start()
 })
 
-$('#reset').click(function () {
+$('#reset').click(function () {//Reset the game
     BoardGame.reset()
 })
 
@@ -276,17 +296,18 @@ $('#yellow').click(function () {
     Player.playerPick(3)
 })
 
-$('#play').click(function () {
-    $('.splash').css('display', 'none')
-    $('.main').css('display', 'flex')
+$('#play').click(function () {//Controls how the intro screen goes away after clicking PLAY
+    $('.splash').css('display', 'none')//Make the intro go away
+    $('.main').css('display', 'flex')//Make the game screen visible to the computer
     setTimeout(function () {
-        $('.main').css('opacity', '1')
+        $('.main').css('opacity', '1')//Make the game screen visible to the user with some transition
     }, 50)
     setTimeout(function () {
-        $('.main').css('transition', 'none')
+        $('.main').css('transition', 'none')//Remove the transitions after game screen is visible to the user
     }, 1050)
 
 })
+//end of Click functions
 
 // $('#dificulty').change(function(){
 //     BoardGame.dificulty = $('#dificulty').value
