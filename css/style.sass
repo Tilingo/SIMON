@@ -111,7 +111,6 @@ body
     left: 25%
     top: 25%
     border-radius: 100%
-    background: white
     border: solid 1em
     box-sizing: border-box
     background: silver
@@ -159,6 +158,9 @@ img
     display: flex
     justify-content: space-around
     align-items: center
+    opacity: 0
+    transition: all 1s ease-in
+    display: none
 
 .information
     color: white
@@ -186,6 +188,54 @@ img
 .logo
     background-color: silver
     width: 60%
+
+.flash
+    width: 50px
+    height: 50px
+    background: white
+    transition: all 0.25s
+    border-radius: 100%
+    animation: colors 2s infinite forwards
+
+@keyframes colors
+    0%
+        background: rgb(195, 0, 0)
+    25%
+        background: #ffcc00
+    50%
+        background: blue
+    100%
+        background: green
+
+@media (max-width: 450px)
+    .information
+        display: none
+    #board
+        width: 400px
+        grid-gap: 10px
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+        .color
+            width: 100%
+            height: 120px
+            border-radius: 0
+    // cursor: pointer
+    // pointer-events: none
+    #center-board
+        position: static
+        display: flex
+        
+        justify-content: center
+        align-items: center
+        width: 100%
+        height: 300px
+        left: 25%
+        top: 25%
+        border-radius: 0
+        border: none
+            
 
     
 

@@ -245,7 +245,7 @@ const AppController = {
         const AIseq = AI.sequence
 
         if (playerSeq[index] !== AIseq[index]) {
-            setTimeout(BoardGame.gameOver, 100)
+            BoardGame.gameOver()
             console.log('bad checked')
         }
         if (playerSeq.length == AIseq.length && playerSeq[index] == AIseq[index]) {
@@ -290,6 +290,15 @@ $('#yellow').click(function () {
     Audio.Yellow()
     Player.playerPick(3)
     console.log(Player.sequence)
+})
+
+$('#play').click(function () {
+    $('.splash').css('display', 'none')
+    $('.main').css('display', 'flex')    
+    // $('.main').css('opacity', '1')
+    setTimeout(function(){
+        $('.main').css('opacity', '1')
+    }, 50)
 })
 
 // $('#dificulty').change(function(){
