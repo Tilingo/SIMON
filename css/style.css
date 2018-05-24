@@ -325,4 +325,10 @@ img {
     font-size: 1em;
   }
 }
+
+@media (min-width: 751px) and (max-width: 1000px) {
+  .information {
+    display: none;
+  }
+}
 /*# sourceMappingURL=style.css.map */
