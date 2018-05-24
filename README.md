@@ -19,9 +19,16 @@ When the users come to the site, they see an intro screen with the name of the g
 ## Features
 
 * PLAY button
-* START button
 * COLORS button
+* START button
 * RESET button
+* A white flash effect on the color buttons when the game starts (after pressing start)
+* Sound when player press a color
+* Sound when the computer displays a color
+* A green glow around the board when the player's sequence is correct
+* A success sound when the player's sequence is correct
+* A red glow around the board when the player's sequence is incorrect
+* A failure sound when the player's sequence is incorrect
 
 ## Wireframe
 
